@@ -1,0 +1,33 @@
+task: acsa
+dataset_path: tsv
+dataset_kwargs:
+  data_files:
+    train: "D:/Uni/Masterarbeit Code/jakob_finetuning/data/GERestaurant/train.tsv"
+    test: "D:/Uni/Masterarbeit Code/jakob_finetuning/data/GERestaurant/test.tsv"
+    validation: "D:/Uni/Masterarbeit Code/jakob_finetuning/data/GERestaurant/val_full.tsv"
+output_type: multiple_choice
+training_split: train
+validation_split: validation
+test_split: test
+doc_to_text: text
+doc_to_target: labels
+doc_to_choice: [
+  '(AMBIENCE#GENERAL, NEGATIVE)', '(AMBIENCE#GENERAL, NEUTRAL)', '(AMBIENCE#GENERAL, POSITIVE)',
+  '(DRINKS#PRICES, NEGATIVE)', '(DRINKS#PRICES, POSITIVE)',
+  '(DRINKS#QUALITY, NEGATIVE)', '(DRINKS#QUALITY, NEUTRAL)', '(DRINKS#QUALITY, POSITIVE)',
+  '(DRINKS#STYLE_OPTIONS, NEGATIVE)', '(DRINKS#STYLE_OPTIONS, POSITIVE)',
+  '(FOOD#PRICES, NEGATIVE)', '(FOOD#PRICES, NEUTRAL)', '(FOOD#PRICES, POSITIVE)',
+  '(FOOD#QUALITY, NEGATIVE)', '(FOOD#QUALITY, NEUTRAL)', '(FOOD#QUALITY, POSITIVE)',
+  '(FOOD#STYLE_OPTIONS, NEGATIVE)', '(FOOD#STYLE_OPTIONS, NEUTRAL)', '(FOOD#STYLE_OPTIONS, POSITIVE)',
+  '(LOCATION#GENERAL, NEGATIVE)', '(LOCATION#GENERAL, NEUTRAL)', '(LOCATION#GENERAL, POSITIVE)',
+  '(RESTAURANT#GENERAL, NEGATIVE)', '(RESTAURANT#GENERAL, NEUTRAL)', '(RESTAURANT#GENERAL, POSITIVE)',
+  '(RESTAURANT#MISCELLANEOUS, NEGATIVE)', '(RESTAURANT#MISCELLANEOUS, NEUTRAL)', '(RESTAURANT#MISCELLANEOUS, POSITIVE)',
+  '(RESTAURANT#PRICES, NEGATIVE)', '(RESTAURANT#PRICES, NEUTRAL)', '(RESTAURANT#PRICES, POSITIVE)',
+  '(SERVICE#GENERAL, NEGATIVE)', '(SERVICE#GENERAL, NEUTRAL)', '(SERVICE#GENERAL, POSITIVE)'
+]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
