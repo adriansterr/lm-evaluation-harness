@@ -1,0 +1,10 @@
+genome:
+    models:
+       - "D:/Uni/Masterarbeit Code/jakob_finetuning/outputs/checkpoint-890"
+       - "D:/Uni/Masterarbeit Code/test/mergekit/models/edited_models/gbert-large-sequence-classifier"
+    merge_method: dare_ties
+    base_model: "D:/Uni/Masterarbeit Code/jakob_finetuning/outputs/checkpoint-890"
+    tokenizer_source: "D:/Uni/Masterarbeit Code/test/mergekit/models/edited_models/gbert-large-sequence-classifier"
+    layer_granularity: 8
+tasks:
+  - name: acsa
