@@ -1,10 +1,10 @@
 genome:
     models:
-       - "D:/Uni/Masterarbeit Code/jakob_finetuning/outputs/checkpoint-890"
-       - "D:/Uni/Masterarbeit Code/test/mergekit/models/edited_models/gbert-large-sequence-classifier"
+       - "VAGOsolutions/Llama-3-SauerkrautLM-8b-Instruct"
+       - "Alpaca69B/llama3-8b-whatsapp-app-reviews-absa"
     merge_method: dare_ties
-    base_model: "D:/Uni/Masterarbeit Code/jakob_finetuning/outputs/checkpoint-890"
-    tokenizer_source: "D:/Uni/Masterarbeit Code/test/mergekit/models/edited_models/gbert-large-sequence-classifier"
+    base_model: "Alpaca69B/llama3-8b-whatsapp-app-reviews-absa"
+    tokenizer_source: "VAGOsolutions/Llama-3-SauerkrautLM-8b-Instruct"
     layer_granularity: 8
 tasks:
   - name: acsa

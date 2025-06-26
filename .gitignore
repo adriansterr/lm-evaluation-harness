@@ -11,7 +11,6 @@ dist
 venv
 .venv/
 .vscode/
-temp
 __pycache__
 .ipynb_checkpoints
 temp
@@ -24,3 +23,5 @@ lm_eval/caching/.cache
 # don't track files created by wandb
 wandb
 examples/wandb
+
+evolve_merges/*
