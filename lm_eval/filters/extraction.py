@@ -231,3 +231,43 @@ class MultiChoiceRegexFilter(RegexFilter):
             filtered_resps.append(filtered)
 
         return filtered_resps
+
+
+@register_filter("extract_aspect_polarity")
+class ExtractAspectPolarityFilter(Filter):
+    """
+    Filter that extracts aspect and polarity pairs from the model responses for ACSA tasks.
+    It uses a regex pattern to find matches in the output text.
+    Matches: (ASPECT, SENTIMENT), - ASPECT: SENTIMENT, ASPECT: SENTIMENT, aspect: sentiment; with and without spaces
+    """
+
+    def apply(self, resps, docs):
+        POLARITIES = ['POSITIVE', 'NEUTRAL', 'NEGATIVE']
+        ASPECTS = [
+            "AMBIENCE#GENERAL", "DRINKS#PRICES", "DRINKS#QUALITY", "DRINKS#STYLE_OPTIONS",
+            "FOOD#PRICES", "FOOD#QUALITY", "FOOD#STYLE_OPTIONS", "LOCATION#GENERAL",
+            "SERVICE#GENERAL", "RESTAURANT#GENERAL", "RESTAURANT#PRICES", "RESTAURANT#MISCELLANEOUS"
+        ]
+        
+        aspect_pattern = "|".join(re.escape(a) for a in ASPECTS)
+        polarity_pattern = "|".join(POLARITIES)
+        
+        REGEX_HARDCODED = re.compile(
+            rf"(?:\(\s*({aspect_pattern})\s*,\s*({polarity_pattern})\s*\)|-?\s*({aspect_pattern})\s*:\s*({polarity_pattern}))",
+            re.IGNORECASE
+        )
+
+        filtered_resps = []
+        for resp_list in resps:
+            filtered = []
+            for resp in resp_list:
+                matches = REGEX_HARDCODED.findall(resp)
+                results = []
+                for m in matches:
+                    aspect = m[0] or m[2]
+                    polarity = m[1] or m[3]
+                    if aspect and polarity:
+                        results.append(f"({aspect.upper()}, {polarity.upper()})")
+                filtered.append(results)  # Always append, even if results is empty
+            filtered_resps.append(filtered)
+        return filtered_resps

@@ -7,5 +7,5 @@ genome:
     tokenizer_source: "VAGOsolutions/Llama-3-SauerkrautLM-8b-Instruct"
     layer_granularity: 8
 tasks:
-  - name: acsa
+  - name: absa
     metric: exact_match
