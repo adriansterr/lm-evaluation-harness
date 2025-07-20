@@ -1,5 +1,5 @@
 task: absa
-dataset_path: tsv
+dataset_path: json
 dataset_kwargs:
   data_files:
     train: "D:/Uni/Masterarbeit Code/jakob_finetuning/data/GERestaurant/12_categories/train_preprocessed.json"
