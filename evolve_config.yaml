@@ -8,3 +8,4 @@ genome:
     layer_granularity: 8
 tasks:
   - name: acsa
+    metric: exact_match

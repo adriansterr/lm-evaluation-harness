@@ -1,1 +1,4 @@
+set OMP_NUM_THREADS=1
+set MKL_NUM_THREADS=1
+
 mergekit-evolve evolve_config.yaml --storage-path evolve_merges
